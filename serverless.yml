@@ -12,7 +12,7 @@ package:
   individually: true
 
 functions:
-# the line below is function name
+# the line below is serverless function name. C# function name is in handler.
   get-all-collections:
     handler: CsharpHandlers::AwsDotnetCsharp.Handler::GetCollections
     package:
@@ -29,3 +29,11 @@ functions:
       - httpApi:
           path: /collection/{paramId}
           method: get
+  create-collection:
+    handler: CsharpHandlers::AwsDotnetCsharp.Handler::CreateCollection
+    package:
+      artifact: bin/Release/netcoreapp3.1/collections-api.zip
+    events:
+      - httpApi:
+          path: /collection/{paramId}
+          method: post
