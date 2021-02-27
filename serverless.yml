@@ -7,6 +7,12 @@ provider:
   lambdaHashingVersion: 20201221
   region: eu-west-2
   profile: my_serverless
+  environment: 
+# these are injected into c# files, taken from the config file. The var name at the beginning of the line is available in c#, doesnt have to be same as in config file, but can be for consistency
+    DB_HOST: ${file(./config.dev.json):DB_HOST}
+    DB_NAME: ${file(./config.dev.json):DB_NAME}
+    DB_USER: ${file(./config.dev.json):DB_USER}
+    DB_PASSWORD: ${file(./config.dev.json):DB_PASSWORD}
 
 package:
   individually: true
